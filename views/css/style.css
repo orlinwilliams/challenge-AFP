@@ -1,4 +1,16 @@
-nav{
-  background: #D9272E;
+nav {
+  background: #d9272e;
   box-shadow: 0 2px 10px rgba(110, 110, 110, 0.7);
+}
+.icon-help {
+  width: 70px;
+  height: 70px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 10px;
+  background: gray;
+  border-radius: 50%;  
+  padding-left: 7px;
+  padding-right: 7px;
+  color: white;
 }
