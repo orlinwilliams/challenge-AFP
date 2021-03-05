@@ -9,7 +9,11 @@
   <title>AFP</title>
 </head>
 <body>
-  <?php include 'views/header.php'?> 
+  <?php include 'views/header.html'?>
+  
+  <main >
+    <?php include 'views/form.html'?>
+  </main>
   <script src="vendor/twbs/bootstrap/dist/js/bootstrap.js"></script>
 </body>
 </html>
