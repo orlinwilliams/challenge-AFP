@@ -22,7 +22,6 @@ $("#saveData").click((e) => {
 });
 $("#sendEmail").click((e) => {
   e.preventDefault();
-  console.log(getDataForm());
-  console.log(getEmailToSend());
+  //console.log({ data: getDataForm(), emailClient: getEmailToSend() });  
   requestPost({ data: getDataForm(), emailClient: getEmailToSend() });
 });

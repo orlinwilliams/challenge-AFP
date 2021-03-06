@@ -25,7 +25,7 @@ const regex = {
 };
 const inputsValidate = (data) => {
   if (!regex.name.test(data.name)) return false;
-  if (!regex.idNumber.test(data.idNumber)) return false;
+  if (!regex.idNumber.test(data.idNumber) || data.idNumber.length == 0) return false;
   if (data.address.length < 2) return false;
   if (data.dateOfBirth.length < 2) return false;
   if (!regex.phone.test(data.phone)) return false;
