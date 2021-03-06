@@ -11,14 +11,14 @@ const getDataForm = () => {
   return { name, idNumber, dateOfBirth, address, phone, email };
 };
 const getEmailToSend = () => {
-  const emailClient = $("#emailClient").val();
+  const mainEmail = $("#mainEmail").val();
   const emailCc = $("#emailCc").val();
-  return { emailClient, emailCc };
+  return { mainEmail, emailCc };
 };
 
 //---------------validations-----------
 const regex = {
-  name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+  name: /^([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\']+[\s])+([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])+[\s]?([A-Za-zÁÉÍÓÚñáéíóúÑ]{0}?[A-Za-zÁÉÍÓÚñáéíóúÑ\'])?$/,
   email: /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/,
   phone: /^([0-9])*$/,
   idNumber: /^([0-9])*$/,
@@ -34,7 +34,7 @@ const inputsValidate = (data) => {
 };
 
 const inputsEmailValidate = (data) => {
-  if (!regex.email.test(data.emailClient)) return false;
+  if (!regex.email.test(data.mainEmail)) return false;
   return true;
 };
 const emailValidate = () => {
@@ -50,8 +50,8 @@ inputs.forEach((el) => {
   el.addEventListener("keyup", validate);
   el.addEventListener("blur", validate);
 });
-$("#emailClient").keyup(emailValidate);
-$("#emailClient").blur(emailValidate);
+$("#mainEmail").keyup(emailValidate);
+$("#mainEmail").blur(emailValidate);
 
 const showDataInModal = () => {
   const currentData = getDataForm();

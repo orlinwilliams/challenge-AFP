@@ -4,9 +4,9 @@ $(function () {
 
 const requestPost = (data) => {
   $.ajax({
-    url: "clases/index.php?accion=2",
+    url: "controllers/index.php",
     method: "POST",
-    data: {},
+    data: data,
     success: function (res) {
       console.log(res);
     },
@@ -16,7 +16,7 @@ const requestPost = (data) => {
   });
 };
 $("#saveData").click((e) => {
-  e.preventDefault();  
+  e.preventDefault();
   showDataInModal();
   $("#modalForm").modal("show");
 });
@@ -24,6 +24,5 @@ $("#sendEmail").click((e) => {
   e.preventDefault();
   console.log(getDataForm());
   console.log(getEmailToSend());
-  requestPost(getDataForm());
+  requestPost({ data: getDataForm(), emailClient: getEmailToSend() });
 });
-
