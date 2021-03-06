@@ -14,3 +14,18 @@ nav {
   padding-right: 7px;
   color: white;
 }
+.toast{
+  position: fixed;
+  top:10vh;
+  right: 0;
+  margin: 1.2rem;
+  z-index: 1200;  
+}
+#iconMessage{
+  font-size: 18px;
+  margin-right: 6px;
+}
+#messageToast{
+  font-size: 15px;
+  margin-right: 0;
+}

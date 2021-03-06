@@ -63,12 +63,10 @@ class Email
                         'Correo: ' . $this->email . '<br>';
 
       
-      if($mail->send()){
-        echo 'Message has been sent';
+      if($mail->send()){        
         return true;
       }
-    } catch (Exception $e) {
-      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    } catch (Exception $e) {      
       return false;
     }
   }

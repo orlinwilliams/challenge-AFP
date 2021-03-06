@@ -14,7 +14,7 @@
   <main class="mt-4">
     <?php include 'views/form.html'?>
   </main>
-     
+  <script src="views/js/all.min.js"></script>   
   <script src="views/js/jquery-3.4.1.min.js"></script>
   <script src="views/js/popper.min.js"></script>
   <script src="views/js/bootstrap.min.js"></script>
