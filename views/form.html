@@ -10,7 +10,7 @@
         <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
           <div class="card">
             <div class="card-body">
-              <form>
+              <form id="registerForm">
                 <div class="form-group">
                   <label for="nameComplete" class="form-label"
                     >Nombre completo</label
@@ -69,7 +69,7 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="address" class="form-label">Teléfono</label>
+                  <label for="phone" class="form-label">Teléfono</label>
                   <input
                     type="text"
                     class="form-control"
@@ -90,13 +90,165 @@
                     minlength="2"
                   />
                 </div>
-                <button type="submit" class="btn btn-outline-danger" id="saveData">
+                <button
+                  type="submit"
+                  class="btn btn-outline-danger"
+                  id="saveData"
+                >
                   Guardar
                 </button>
               </form>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal send data -->
+<div id="modalForm" class="modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center">Información a enviar</h5>
+            <form>
+              <div class="form-group row">
+                <label for="showName" class="col-sm-5 col-form-label"
+                  >Nombre:</label
+                >
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    id="showName"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="showIdNumber" class="col-sm-5 col-form-label"
+                  >Número de identidad:</label
+                >
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    id="showIdNumber"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="showDateOfBirth" class="col-sm-5 col-form-label"
+                  >Fecha de nacimiento:</label
+                >
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    id="showDateOfBirth"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="showAddress" class="col-sm-5 col-form-label"
+                  >Dirección</label
+                >
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    id="showAddress"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="showPhone" class="col-sm-5 col-form-label"
+                  >Teléfono:</label
+                >
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    id="showPhone"
+                  />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="showEmail" class="col-sm-5 col-form-label"
+                  >Correo</label
+                >
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    readonly
+                    class="form-control-plaintext"
+                    id="showEmail"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card mt-3">
+          <div class="card-body">
+            <h5 class="card-title text-center">
+              Correo al que desea enviar la información
+            </h5>
+            <form>
+              <div class="form-group row">
+                <label for="emailClient" class="col-sm-3 col-form-label"
+                  >Correo</label
+                >
+                <div class="col-sm-9">
+                  <input type="email" class="form-control" id="emailClient" />
+                </div>
+              </div>
+              <p>
+                <button
+                  class="btn btn-primary btn-sm"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseCc"
+                  aria-expanded="false"
+                  aria-controls="collapseCc"
+                >
+                  <strong>+</strong>Cc
+                </button>
+              </p>
+              <div class="collapse" id="collapseCc">
+                <div class="form-group row">
+                  <label for="emailCc" class="col-sm-3 col-form-label"
+                    >Cc</label
+                  >
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="emailCc" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="sendEmail" class="btn btn-outline-danger">
+          Enviar correo
+        </button>
       </div>
     </div>
   </div>
