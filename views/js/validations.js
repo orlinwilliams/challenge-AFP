@@ -1,19 +1,28 @@
 //----------------data-----------------------------
-const inputs = document.querySelectorAll("#registerForm input");
+const inputs = document.querySelectorAll('#registerForm input');
 let collapseEmailCc = false;
 const getDataForm = () => {
-  const name = $("#nameComplete").val();
-  const idNumber = $("#idNumber").val();
-  const dateOfBirth = $("#dateOfBirth").val();
-  const address = $("#address").val();
-  const phone = $("#phone").val();
-  const email = $("#email").val();
+  const name = $('#nameComplete').val();
+  const idNumber = $('#idNumber').val();
+  const dateOfBirth = $('#dateOfBirth').val();
+  const address = $('#address').val();
+  const phone = $('#phone').val();
+  const email = $('#email').val();
   return { name, idNumber, dateOfBirth, address, phone, email };
 };
 const getEmailToSend = () => {
-  const mainEmail = $("#mainEmail").val();
-  const emailCc = $("#emailCc").val();
+  const mainEmail = $('#mainEmail').val();
+  const emailCc = $('#emailCc').val();
   return { mainEmail, emailCc };
+};
+const showDataInModal = () => {
+  const currentData = getDataForm();
+  $('#showName').val(currentData.name);
+  $('#showIdNumber').val(currentData.idNumber);
+  $('#showDateOfBirth').val(currentData.dateOfBirth);
+  $('#showAddress').val(currentData.address);
+  $('#showPhone').val(currentData.phone);
+  $('#showEmail').val(currentData.email);
 };
 
 //---------------validations-----------
@@ -33,39 +42,30 @@ const inputsValidate = (data) => {
   if (!regex.email.test(data.email)) return false;
   return true;
 };
+const validate = () => {
+  if (inputsValidate(getDataForm())) $('#saveData').prop('disabled', false);
+  else $('#saveData').prop('disabled', true);
+};
 
 const inputsEmailValidate = (data) => {
   if (!regex.email.test(data.mainEmail)) return false;
-  if(collapseEmailCc){
+  if (collapseEmailCc) {
     if (!regex.email.test(data.emailCc)) return false;
   }
   return true;
 };
 const emailValidate = () => {
   if (inputsEmailValidate(getEmailToSend()))
-    $("#sendEmail").prop("disabled", false);
-  else $("#sendEmail").prop("disabled", true);
+    $('#sendEmail').prop('disabled', false);
+  else $('#sendEmail').prop('disabled', true);
 };
-const validate = () => {
-  if (inputsValidate(getDataForm())) $("#saveData").prop("disabled", false);
-  else $("#saveData").prop("disabled", true);
-};
+//------------events-----------
 inputs.forEach((el) => {
-  el.addEventListener("keyup", validate);
-  el.addEventListener("blur", validate);
+  el.addEventListener('keyup', validate);
+  el.addEventListener('blur', validate);
 });
-$("#mainEmail").keyup(emailValidate);
-$("#mainEmail").blur(emailValidate);
-$("#emailCc").keyup(emailValidate);
-$("#emailCc").blur(emailValidate);
-$("#collapseCc").click(() => (collapseEmailCc = !collapseEmailCc));
-
-const showDataInModal = () => {
-  const currentData = getDataForm();
-  $("#showName").val(currentData.name);
-  $("#showIdNumber").val(currentData.idNumber);
-  $("#showDateOfBirth").val(currentData.dateOfBirth);
-  $("#showAddress").val(currentData.address);
-  $("#showPhone").val(currentData.phone);
-  $("#showEmail").val(currentData.email);
-};
+$('#mainEmail').keyup(emailValidate);
+$('#mainEmail').blur(emailValidate);
+$('#emailCc').keyup(emailValidate);
+$('#emailCc').blur(emailValidate);
+$('#collapseCc').click(() => (collapseEmailCc = !collapseEmailCc));

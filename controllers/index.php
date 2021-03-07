@@ -1,5 +1,7 @@
 <?php
 include_once('email.php');
+
+//-----------------Validations-----------------
 if (!isset($_POST['data'])) {
   echo json_encode(['error' => true, 'message' => 'data not exist']);
 }
@@ -35,7 +37,9 @@ if (!isset($emailClient['emailCc'])) {
 }
 if (count($errors) > 0) {
   echo json_encode(['error' => true, 'message' => "fields are empty or do not exist", 'fields' => $errors]);
-} else {
+}
+//-----------Send email------------------
+else {
   $email = new Email($data, $emailClient);
   if ($email->sendEmail()) {
     echo json_encode(['error' => false, 'message' => 'email send successfuly']);
