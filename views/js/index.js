@@ -20,8 +20,7 @@ const requestPost = (data) => {
     method: 'POST',
     data: data,
     dataType: 'json',
-    success: function (res) {
-      console.log(res);
+    success: function (res) {      
       if (res.error) {
         notification('error', 'Error en el envió del correo');
         $('#modalForm').modal('hide');
