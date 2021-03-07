@@ -23,20 +23,22 @@ const requestPost = (data) => {
     success: function (res) {
       console.log(res);
       if (res.error) {
-        notification('error', 'Error al envió del correo');
+        notification('error', 'Error en el envió del correo');
         $('#modalForm').modal('hide');
       } else {
         notification('success', 'Correo enviado exitosamente');
         $('#modalForm').modal('hide');
+        $('#registerForm')[0].reset();
+        $('#emailsForm')[0].reset();
       }
     },
     error: function (error) {
       console.log(error);
-      notification('error', 'Error al envió del correo');      
+      notification('error', 'Error en el envió del correo');
     },
   });
 };
-//-------------events------------ 
+//-------------events------------
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });

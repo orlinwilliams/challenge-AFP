@@ -17,7 +17,7 @@ class Email
   private $mainEmail;
   private $emailCc;
   private $subject = 'challenge AFP';
-  private $greet = 'Buenas,<br> <p>En este correo se envío la siguiente información :</p><br>';
+  private $greet = 'Buenas,<br> <p>En este correo se envio la siguiente informacion :</p><br>';
 
   public function __construct($data, $emailClient)
   {
@@ -35,7 +35,7 @@ class Email
     $mail = new PHPMailer(true);
     try {
       
-      $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      
+      $mail->SMTPDebug = 0;                      
       $mail->isSMTP();                                            
       $mail->Host       = 'smtp.gmail.com';                     
       $mail->SMTPAuth   = true;                                   
@@ -53,16 +53,17 @@ class Email
       $mail->isHTML(true);                                 
       $mail->Subject = $this->subject;
       $mail->Body    =  $this->greet . 'Nombre: ' . $this->name . '<br>' . 
-                        'Número de identidad: ' . $this->idNumber . '<br>' .
+                        'Numero de identidad: ' . $this->idNumber . '<br>' .
                         'Fecha de nacimiento: ' . $this->dateOfBirth . '<br>'.
-                        'Dirección: ' . $this->address . '<br>'.
-                        'Teléfono: ' . $this->phone . '<br>'.
+                        'Direccion: ' . $this->address . '<br>'.
+                        'Telefono: ' . $this->phone . '<br>'.
                         'Correo: ' . $this->email . '<br>';
       
-      if($mail->send()){        
+      if($mail->send()){                
         return true;
       }
     } catch (Exception $e) {      
+      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
       return false;
     }
   }
