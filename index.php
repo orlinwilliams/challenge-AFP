@@ -19,6 +19,6 @@
   <script src="views/js/popper.min.js"></script>
   <script src="views/js/bootstrap.min.js"></script>
   <script src="views/js/validations.js"></script>
-  <script src="views/js/form.js"></script>
+  <script src="views/js/index.js"></script>
 </body>
 </html>

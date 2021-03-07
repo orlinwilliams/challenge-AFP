@@ -1,6 +1,6 @@
 //----------------data-----------------------------
 const inputs = document.querySelectorAll("#registerForm input");
-
+let collapseEmailCc = false;
 const getDataForm = () => {
   const name = $("#nameComplete").val();
   const idNumber = $("#idNumber").val();
@@ -36,6 +36,9 @@ const inputsValidate = (data) => {
 
 const inputsEmailValidate = (data) => {
   if (!regex.email.test(data.mainEmail)) return false;
+  if(collapseEmailCc){
+    if (!regex.email.test(data.emailCc)) return false;
+  }
   return true;
 };
 const emailValidate = () => {
@@ -53,6 +56,9 @@ inputs.forEach((el) => {
 });
 $("#mainEmail").keyup(emailValidate);
 $("#mainEmail").blur(emailValidate);
+$("#emailCc").keyup(emailValidate);
+$("#emailCc").blur(emailValidate);
+$("#collapseCc").click(() => (collapseEmailCc = !collapseEmailCc));
 
 const showDataInModal = () => {
   const currentData = getDataForm();
