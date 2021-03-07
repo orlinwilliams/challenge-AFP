@@ -17,7 +17,7 @@ class Email
   private $mainEmail;
   private $emailCc;
   private $subject = 'challenge AFP';
-  private $greet = 'Buenas,<br> <p>En este correo se envio la siguiente informacion :</p><br>';
+  private $greet = 'Buenas,<br> <p>Este correo se envio de la siguiente aplicacion: https://afp-atlantida-orlin.herokuapp.com/ </p>Se recopilo la siguiente informacion:';
 
   public function __construct($data, $emailClient)
   {
@@ -52,7 +52,7 @@ class Email
     
       $mail->isHTML(true);                                 
       $mail->Subject = $this->subject;
-      $mail->Body    =  $this->greet . 'Nombre: ' . $this->name . '<br>' . 
+      $mail->Body    = '<br>'.$this->greet . 'Nombre: ' . $this->name . '<br>' . 
                         'Numero de identidad: ' . $this->idNumber . '<br>' .
                         'Fecha de nacimiento: ' . $this->dateOfBirth . '<br>'.
                         'Direccion: ' . $this->address . '<br>'.
