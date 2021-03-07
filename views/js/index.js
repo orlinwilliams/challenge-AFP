@@ -21,14 +21,17 @@ const requestPost = (data) => {
     data: data,
     dataType: 'json',
     success: function (res) {      
+      console.log(res);
       if (res.error) {
+        
         notification('error', 'Error en el envió del correo');
-        $('#modalForm').modal('hide');
+        $('#modalForm').modal('hide');        
       } else {
         notification('success', 'Correo enviado exitosamente');
         $('#modalForm').modal('hide');
         $('#registerForm')[0].reset();
         $('#emailsForm')[0].reset();
+        $('#saveData').prop('disabled', true);
       }
     },
     error: function (error) {
