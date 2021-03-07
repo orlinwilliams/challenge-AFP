@@ -1,9 +1,9 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
-const nofification = (type, message) => {
+const notification = (type, message) => {
   $("#messageToast").html(message);
-  
+
   if (type == "success") {
     $(".toast-body").removeClass("bg-danger");
     $("#iconMessage").removeClass("fa-exclamation-circle");
@@ -23,19 +23,18 @@ const requestPost = (data) => {
     url: "controllers/index.php",
     method: "POST",
     data: data,
-    //dataType:'json',
+    dataType: 'json',
     success: function (res) {
-      //console.log(res);
-      const dateRes = JSON.parse(res);
-      console.log(dateRes);
-      if(res.error == false){
-       // console.log(res);
-        notification('success', res.message);
-
+      console.log(res);
+      if(res.error){
+        notification('error', 'Error al envió del correo');
+      }else{
+        notification('success', 'Correo enviado exitosamente');
       }
     },
     error: function (error) {
       console.log(error);
+      notification('error', 'Error al envió del correo');
     },
   });
 };
@@ -46,7 +45,6 @@ $("#saveData").click((e) => {
   $("#modalForm").modal("show");
 });
 $("#sendEmail").click((e) => {
-  e.preventDefault();
+  e.preventDefault();  
   requestPost({ data: getDataForm(), emailClient: getEmailToSend() });
 });
-
